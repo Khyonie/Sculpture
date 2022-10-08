@@ -1,5 +1,6 @@
 package fish.yukiemeralis.eden.sculpture;
 
+import java.util.Collection;
 import java.util.UUID;
 
 import org.bukkit.craftbukkit.v1_19_R1.CraftServer;
@@ -32,6 +33,12 @@ public class Nms
         PlayerConnection connection = getConnection(player);
         for (Packet<?> packet : packets)
             connection.a(packet);
+    }
+
+    public static void sendPacket(Collection<Player> players, Packet<?>... packets)
+    {
+        for (Player p : players)
+            sendPacket(p, packets);
     }
 
     public static MinecraftServer getNmsServer()

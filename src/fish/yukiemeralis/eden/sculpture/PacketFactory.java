@@ -1,7 +1,9 @@
 package fish.yukiemeralis.eden.sculpture;
 
 import fish.yukiemeralis.eden.sculpture.remapped.EdenPlayerInfoAction;
+import net.minecraft.network.protocol.game.PacketPlayOutEntityDestroy;
 import net.minecraft.network.protocol.game.PacketPlayOutEntityHeadRotation;
+import net.minecraft.network.protocol.game.PacketPlayOutEntityTeleport;
 import net.minecraft.network.protocol.game.PacketPlayOutNamedEntitySpawn;
 import net.minecraft.network.protocol.game.PacketPlayOutPlayerInfo;
 import net.minecraft.server.level.EntityPlayer;
@@ -23,5 +25,15 @@ public class PacketFactory
     public static PacketPlayOutEntityHeadRotation entityHeadRotation(Entity entity, byte rotation)
     {
         return new PacketPlayOutEntityHeadRotation(entity, rotation);
+    }
+
+    public static PacketPlayOutEntityTeleport entityTeleport(Entity entity)
+    {
+        return new PacketPlayOutEntityTeleport(entity);
+    }
+
+    public static PacketPlayOutEntityDestroy entityDestroy(Entity entity)
+    {
+        return new PacketPlayOutEntityDestroy(entity.ae());
     }
 }
